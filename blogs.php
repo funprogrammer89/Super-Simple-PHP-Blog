@@ -9,23 +9,43 @@
 $dir = getcwd();
 $dir2 = "/blogs/";
 $dir3 = $dir.$dir2;
+$colors = array("blue","purple","green","red","yellow","orange");
+$colorCount = 0;
+// Set the directory path
+$dir = 'path/to/directory';
 
+// Check if the directory exists and is accessible
+if (!is_dir($dir3)) {
+    die("The directory $dir does not exist or is not accessible.");
+}
 
-// Open the directory
-$dh = opendir($dir3);
+// Get all the text files in the directory
+$files = glob("$dir3/*.txt");
+
+// Sort the files by newest date
+usort($files, function($a, $b) {
+    return filemtime($b) - filemtime($a);
+});
+
 
 // Loop through all files in the directory
-while (($file = readdir($dh)) !== false) {
-    // Check if the file is a text file
-    if (pathinfo($file, PATHINFO_EXTENSION) == 'txt') {
-        // Open the text file
-        $text = file_get_contents($dir3 . '/' . $file);
-        // Display the text as HTML and add some ad hoc HTML tags and flair
-		echo "</td></tr><tr><td>";
+foreach ($files as $file) {
+    // Check if the file is readable
+    if (!is_readable($file)) {
+        echo "The file $file is not readable.";
+        continue;
+    }
+    // Open the text file
+    $text = file_get_contents($file);
+     // Display the text as HTML and add some ad hoc HTML tags and flair
+    echo "</td></tr><tr><td>";
 		//Set the size of your headers from your text file
-		echo "<font size='6'>";
-		// remove the .txt from the display
-		echo rtrim($file, ".txt");
+	echo "<font size='6' color='$colors[$colorCount]'>";
+		// remove the .txt from the display header
+		$name = rtrim($file, ".txt");
+		// remove the directory path from the display header
+		$name = ltrim($name, "/var/www/html/blogs");
+		echo $name;
 		echo "</font></td><td align=left>";
 		// get date and time of the text document and remove time with substring
 		echo "<script>x = document.lastModified;
@@ -33,11 +53,9 @@ while (($file = readdir($dh)) !== false) {
         echo nl2br($text);
 		// add break so there is spacing between entries
 		echo "<br><br>";
-    }
+		$colorCount++;
 }
 
-// Close the directory
-closedir($dh);
 
 ?>
 </td></tr></table>
