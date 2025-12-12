@@ -1,5 +1,4 @@
 <html>
-
 <body>
 <center><h1><center>Ken Elliott's Micro Blog</h1>
 ----------------------------------------------------<br><br><br>
