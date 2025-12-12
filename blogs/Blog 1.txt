@@ -1,1 +1,1 @@
-Sample text for blog<br><br><img src='img/t.jpg'>
+Sample text for blog<br><br><img src='imgs/t.jpg'>
