@@ -23,9 +23,9 @@ if (!is_dir($dir3)) {
 $files = glob("$dir3/*.txt");
 
 // Sort the files by newest date
-usort($files, function($a, $b) {
-    return filemtime($b) - filemtime($a);
-});
+//usort($files, function($a, $b) {
+  //  return filemtime($b) - filemtime($a);
+//});
 
 
 // Loop through all files in the directory
@@ -48,7 +48,7 @@ foreach ($files as $file) {
 		echo $name;
 		echo "</font></td><td align=left>";
 		// get date and time of the text document and remove time with substring
-		echo "<script>x = document.lastModified;
+		// echo "<script>x = document.lastModified;
 		document.write(x.substring(0,x.length-8));</script></td></tr><tr><td><br>";
         echo nl2br($text);
 		// add break so there is spacing between entries
