@@ -47,7 +47,7 @@ foreach ($files as $file) {
 		// remove the directory path from the display header
 		$name = ltrim($name, "/var/www/html/blogs");
 		echo $name;
-		echo "</font></td><td align=left>";
+		echo "</font></td><td align=left><br><br>";
 		// get date and time of the text document and remove time with substring
 		// echo "<script>x = document.lastModified;
 		//document.write(x.substring(0,x.length-8));</script></td></tr><tr><td><br>";
