@@ -51,7 +51,7 @@ foreach ($files as $file) {
 		// get date and time of the text document and remove time with substring
 		// echo "<script>x = document.lastModified;
 		//document.write(x.substring(0,x.length-8));</script></td></tr><tr><td><br>";
-        //echo nl2br($text);
+        echo nl2br($text);
 		// add break so there is spacing between entries
 		echo "<br><br>";
 		$colorCount++;
